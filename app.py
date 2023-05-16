@@ -50,31 +50,31 @@ features = ['Number_of_vehicles_involved','Number_of_casualties','Hour_of_Day','
     'Educational_level','Service_year_of_vehicle','Day_of_week','Area_accident_occured']
 
 # encode using ordinal encoder and predict
-    if submit:
-       input_array = np.array([collision,
-                  Age_band,Sex,Education,service_vehicle,
-                  Day_week,Accident_area], ndmin=2)
-        
-       encoded_arr = list(encoder.transform(input_array).ravel())
-        
-       num_arr = [No_vehicles,No_casualties,Hour]
-       pred_arr = np.array(num_arr + encoded_arr).reshape(1,-1)        
-      
+if submit:
+input_array = np.array([collision,
+          Age_band,Sex,Education,service_vehicle,
+          Day_week,Accident_area], ndmin=2)
+
+encoded_arr = list(encoder.transform(input_array).ravel())
+
+num_arr = [No_vehicles,No_casualties,Hour]
+pred_arr = np.array(num_arr + encoded_arr).reshape(1,-1)        
+
 # predict the target from all the input features
-       prediction = model.predict(pred_arr)
-        
-       if prediction == 0:
-           st.write(f"The severity prediction is fatal injury⚠")
-       elif prediction == 1:
-           st.write(f"The severity prediction is serious injury")
-       else:
-           st.write(f"The severity prediction is slight injury")
-        
-       st.write("Developed By: Avi kumar Talaviya")
-       st.markdown("""Reach out to me on: [Twitter](https://twitter.com/avikumart_) |
-       [Linkedin](https://www.linkedin.com/in/avi-kumar-talaviya-739153147/) |
-       [Kaggle](https://www.kaggle.com/avikumart) 
-       """)
+prediction = model.predict(pred_arr)
+
+if prediction == 0:
+   st.write(f"The severity prediction is fatal injury⚠")
+elif prediction == 1:
+   st.write(f"The severity prediction is serious injury")
+else:
+   st.write(f"The severity prediction is slight injury")
+
+st.write("Developed By: Avi kumar Talaviya")
+st.markdown("""Reach out to me on: [Twitter](https://twitter.com/avikumart_) |
+[Linkedin](https://www.linkedin.com/in/avi-kumar-talaviya-739153147/) |
+[Kaggle](https://www.kaggle.com/avikumart) 
+""")
 
 
 # Give a title to web app using html syntax
