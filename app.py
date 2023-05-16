@@ -51,14 +51,14 @@ features = ['Number_of_vehicles_involved','Number_of_casualties','Hour_of_Day','
 
 # encode using ordinal encoder and predict
 if submit:
-input_array = np.array([collision,
-          Age_band,Sex,Education,service_vehicle,
-          Day_week,Accident_area], ndmin=2)
+        input_array = np.array([collision,
+                  Age_band,Sex,Education,service_vehicle,
+                  Day_week,Accident_area], ndmin=2)
 
-encoded_arr = list(encoder.transform(input_array).ravel())
+        encoded_arr = list(encoder.transform(input_array).ravel())
 
-num_arr = [No_vehicles,No_casualties,Hour]
-pred_arr = np.array(num_arr + encoded_arr).reshape(1,-1)        
+        num_arr = [No_vehicles,No_casualties,Hour]
+        pred_arr = np.array(num_arr + encoded_arr).reshape(1,-1)        
 
 # predict the target from all the input features
 prediction = model.predict(pred_arr)
